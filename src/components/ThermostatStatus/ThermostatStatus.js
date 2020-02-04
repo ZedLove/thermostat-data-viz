@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './ThermostatStatus.css'
 
 const capitalize = (s) => {
@@ -23,10 +23,10 @@ const  ThermostatStatus = () => {
 
   return (
     <section className="ThermostatStatus">
-      <h2>Thermostat Status: {capitalize(currentStatus)}</h2>
+      <h2>Thermostat Status: <span className={currentStatus}>{capitalize(currentStatus)}</span></h2>
       <form >
         <label htmlFor="select-status">Select Status: </label>
-        <select name="select-status" value={currentStatus} onChange={handleChangeStatus}>
+        <select name="select-status" value={STATUS[currentStatus]} onChange={handleChangeStatus}>
           {Object.entries(STATUS).map(([k,v]) => {
             return <option value={k} key={k}>{capitalize(v)}</option>
           })}

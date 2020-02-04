@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import ThermostatGraph from './components/ThermostatGraph/ThermostatGraph'
 import ThermostatStatus from './components/ThermostatStatus/ThermostatStatus'
 import './App.css'
