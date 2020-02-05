@@ -1,0 +1,40 @@
+.ThermostatStatus {
+    max-width: 50%;
+    display: flex;
+    align-items: baseline;
+
+    .status-display {
+        display: flex;
+        align-items: baseline;
+        flex-grow: 2;
+
+        .current-status {
+            margin-left: 5%;
+
+            &.off {
+                color: #ffffff;
+            }
+            &.cool {
+                color: #5bc0eb;
+            }
+            &.heat {
+                color: #c3423f;
+            }
+            &.fan-on {
+                color: #9bc53d;
+            }
+            &.auto {
+                color: #fde74c;
+            }
+        }
+    }
+
+    .select-status-form {
+        display: flex;
+        flex-grow: 1;
+
+        select {
+            margin-left: 5%;
+        }
+    }
+}

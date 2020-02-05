@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import './ThermostatStatus.css'
+import './ThermostatStatus.scss'
 
-const capitalize = (s) => {
+export function capitalize(s) {
   return s.charAt(0).toUpperCase() + s.substring(1)
 }
 
-const  ThermostatStatus = () => {
+export const STATUS = {
+  OFF:    "off",
+  COOL:   "cool",
+  HEAT:   "heat",
+  FAN_ON: "fan-on",
+  AUTO:   "auto"
+}
 
-  const STATUS = {
-    OFF:    "off",
-    COOL:   "cool",
-    HEAT:   "heat",
-    FAN_ON: "fan-on",
-    AUTO:   "auto"
-  }
+const  ThermostatStatus = () => {
   const [currentStatus, setCurrentStatus] = useState(STATUS.OFF)
 
   const handleChangeStatus = (e) => {
@@ -23,10 +23,13 @@ const  ThermostatStatus = () => {
 
   return (
     <section className="ThermostatStatus">
-      <h2>Thermostat Status: <span className={currentStatus}>{capitalize(currentStatus)}</span></h2>
-      <form >
+      <section className="status-display">
+        <h2 className="status-title">Thermostat Status:</h2>
+        <h3 className={'current-status ' + currentStatus} data-testid="current-status">{capitalize(currentStatus)}</h3>
+      </section>
+      <form className="select-status-form">
         <label htmlFor="select-status">Select Status: </label>
-        <select name="select-status" value={STATUS[currentStatus]} onChange={handleChangeStatus}>
+        <select name="select-status" value={STATUS[currentStatus]} data-testid="select-status" onChange={handleChangeStatus}>
           {Object.entries(STATUS).map(([k,v]) => {
             return <option value={k} key={k}>{capitalize(v)}</option>
           })}

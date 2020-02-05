@@ -1,36 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Line } from 'react-chartjs-2'
-import './ThermostatGraph.css'
+import './ThermostatGraph.scss'
 
 const  ThermostatGraph = () => {
   const [thermostatData, setThermostatData] = useState()
 
   const prepareDataForChart = (datasets) => {
-  //   {
-  //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  //     datasets: [{
-  //         label: '# of Votes',
-  //         data: [12, 19, 3, 5, 2, 3],
-  //         backgroundColor: [
-  //             'rgba(255, 99, 132, 0.2)',
-  //             'rgba(54, 162, 235, 0.2)',
-  //             'rgba(255, 206, 86, 0.2)',
-  //             'rgba(75, 192, 192, 0.2)',
-  //             'rgba(153, 102, 255, 0.2)',
-  //             'rgba(255, 159, 64, 0.2)'
-  //         ],
-  //         borderColor: [
-  //             'rgba(255, 99, 132, 1)',
-  //             'rgba(54, 162, 235, 1)',
-  //             'rgba(255, 206, 86, 1)',
-  //             'rgba(75, 192, 192, 1)',
-  //             'rgba(153, 102, 255, 1)',
-  //             'rgba(255, 159, 64, 1)'
-  //         ],
-  //         borderWidth: 1
-  //     }]
-  // }
     const backgroundColors = ['rgba(251, 209, 162, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(125, 207, 182, 0.2)',]
     const borderColors = ['rgba(251, 209, 162, 1)', 'rgba(54, 162, 235, 1)', 'rgba(125, 207, 182, 1)',]
 
@@ -72,13 +48,13 @@ const  ThermostatGraph = () => {
   }, [])
 
   return (
-    <section className="ThermostatGraph">
+    <section className="ThermostatGraph" data-testid="thermostat-component">
       <h2>Thermostat Data</h2>
       {thermostatData ?
-      <div>
+      <div data-testid="thermostat-chart-container">
         <Line data={thermostatData}></Line>
       </div> :
-      <div>
+      <div data-testid="thermostat-loading-data">
         <h3>Loading Thermostat Data...</h3>
         <p>If a chart does not appear, please try refreshing the page.</p>
       </div>}
